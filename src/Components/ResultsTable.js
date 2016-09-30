@@ -19,7 +19,7 @@ class ResultsTable extends React.Component {
                     </tr>
                     </thead>
                     <tbody>
-                        {results.map(team => <LeagueRow team={team} key={team.name} />)}
+                        {results.map(result => <LeagueRow result={result} key={result.team} />)}
                     </tbody>
                 </table>
             </div>

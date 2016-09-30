@@ -14,7 +14,7 @@ class LeagueTable extends React.Component {
       },
       dummyResults: [
         {
-          name: "Chalgrove United",
+          team: "Chalgrove United",
           for: 3,
           against: 2,
           won: 1,
@@ -23,7 +23,7 @@ class LeagueTable extends React.Component {
           points: 4
         },
         {
-          name: "Watlington Rovers",
+          team: "Watlington Rovers",
           for: 2,
           against: 3,
           won: 0,
