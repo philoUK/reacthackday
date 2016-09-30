@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import ResultsTable from './ResultsTable'
 import AddTeam from "./AddTeam"
+import AddMatch from "./AddMatch";
 
 class LeagueTable extends React.Component {
   constructor() {
