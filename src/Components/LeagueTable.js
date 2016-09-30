@@ -3,13 +3,15 @@ import ResultsTable from './ResultsTable'
 import AddTeam from "./AddTeam"
 import LeagueRules from "./LeagueRules"
 import AddMatch from "./AddMatch"
+import JsonDebug from "./JsonDebug"
+
 import calculateResults from "../Model/calculateResults"
 
 class LeagueTable extends React.Component {
   constructor() {
     super();
     this.state = {
-      teams: [],
+      teams: ["Chalgrove", "Watlington", "Stadhampton"],
       matches: [
         {
           team1: {teamName: "Chalgrove", score: 1},
@@ -47,7 +49,7 @@ class LeagueTable extends React.Component {
   setPointsForWin(points) {
     this.setState({
       rules: {
-        pointsForWin: points,
+        pointsForWin: Number(points),
         pointsForDraw: this.state.rules.pointsForDraw
       }
     });
@@ -57,7 +59,7 @@ class LeagueTable extends React.Component {
     this.setState({
       rules: {
         pointsForWin: this.state.rules.pointsForWin,
-        pointsForDraw: points
+        pointsForDraw: Number(points)
       }
     });
   }
@@ -76,11 +78,11 @@ class LeagueTable extends React.Component {
         <AddMatch teams={this.state.teams} actions={this.actions} />
         <ResultsTable results={calculateResults(this.state.matches, this.state.rules)} />
         <div className="settings">
-          <LeagueRules pointsType='win' points={this.state.rules.pointsForWin} setPoints={this.setPointsForWin} />
-          <LeagueRules pointsType='draw' points={this.state.rules.pointsForDraw} setPoints={this.setPointsForDraw} />
+          <LeagueRules pointsType='win' points={this.state.rules.pointsForWin} setPoints={this.actions.setPointsForWin} />
+          <LeagueRules pointsType='draw' points={this.state.rules.pointsForDraw} setPoints={this.actions.setPointsForDraw} />
           <AddTeam actions={this.actions} />
         </div>
-        <p>{JSON.stringify(this.state)}</p>
+        <JsonDebug info={this.state} />
       </div>
     )
   }
