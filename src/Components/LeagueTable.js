@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import ResultsTable from './ResultsTable'
 
 class LeagueTable extends React.Component {
   render () {
