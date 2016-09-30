@@ -10,27 +10,21 @@ import calculateResults from "../Model/calculateResults"
 class LeagueTable extends React.Component {
   constructor() {
     super();
-    this.state = {
-      teams: ["Chalgrove", "Watlington", "Stadhampton"],
-      matches: [
-        {
-          team1: {teamName: "Chalgrove", score: 1},
-          team2: {teamName: "Watlington", score: 0}
-      },
-        {
-          team1: {teamName: "Chalgrove", score: 0},
-          team2: {teamName: "Stadhampton", score: 2}
-        },
-        {
-          team1: {teamName: "Stadhampton", score: 1},
-          team2: {teamName: "Watlington", score: 1}
-        },
-      ],
-      rules: {
-        pointsForWin: 3,
-        pointsForDraw: 1
-        }
-    };
+
+    const savedState = localStorage.getItem("LeagueTable.state");
+    if (savedState) {
+      this.state = JSON.parse(savedState);
+    }
+    else {
+      this.state = {
+        teams: [],
+        matches: [],
+        rules: {
+          pointsForWin: 3,
+          pointsForDraw: 1
+          }
+      };
+    }
 
     this.actions = {
       addTeam: this.addTeam.bind(this),
@@ -38,6 +32,10 @@ class LeagueTable extends React.Component {
       setPointsForWin: this.setPointsForWin.bind(this),
       setPointsForDraw: this.setPointsForDraw.bind(this)
     };
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("LeagueTable.state", JSON.stringify(this.state));
   }
 
   addTeam(name) {
