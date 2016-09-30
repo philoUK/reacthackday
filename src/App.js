@@ -12,8 +12,9 @@ class App extends Component {
           <h2>League Table</h2>
         </div>
         <p className="App-intro">
-          <LeagueTable />
+          Welcome to our league table
         </p>
+        <LeagueTable />
       </div>
     );
   }
