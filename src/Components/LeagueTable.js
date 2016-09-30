@@ -4,6 +4,7 @@ import AddTeam from "./AddTeam"
 import LeagueRules from "./LeagueRules"
 import AddMatch from "./AddMatch"
 import JsonDebug from "./JsonDebug"
+import InlineEdit from "react-edit-inline"
 
 import calculateResults from "../Model/calculateResults"
 
@@ -17,6 +18,7 @@ class LeagueTable extends React.Component {
     }
     else {
       this.state = {
+        leagueName: "My League",
         teams: [],
         matches: [],
         rules: {
@@ -31,7 +33,8 @@ class LeagueTable extends React.Component {
       removeTeam: this.removeTeam.bind(this),
       addMatch: this.addMatch.bind(this),
       setPointsForWin: this.setPointsForWin.bind(this),
-      setPointsForDraw: this.setPointsForDraw.bind(this)
+      setPointsForDraw: this.setPointsForDraw.bind(this),
+      editLeagueName: this.editLeagueName.bind(this)
     };
   }
 
@@ -76,11 +79,19 @@ class LeagueTable extends React.Component {
     });
   }
 
+  editLeagueName({name}) {
+    this.setState({
+      leagueName: name
+    });
+  }
+
   render () {
     return (
 
       <div className="league-table">
-
+        <p className="App-intro">
+          <InlineEdit text={this.state.leagueName} paramName="name" change={this.actions.editLeagueName} />
+        </p>
         <AddMatch teams={this.state.teams} actions={this.actions} />
         <ResultsTable results={calculateResults(this.state.matches, this.state.rules)} actions={this.actions}/>
         <div className="settings">

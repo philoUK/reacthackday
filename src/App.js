@@ -11,9 +11,6 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>League Table</h2>
         </div>
-        <p className="App-intro">
-          Welcome to our league table
-        </p>
         <LeagueTable />
       </div>
     );
