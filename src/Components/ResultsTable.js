@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import LeagueRow from './LeagueRow'
 
 class ResultsTable extends React.Component {
