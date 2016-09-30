@@ -17,7 +17,7 @@ class ResultsTable extends React.Component {
     render(){
         return (
             <div className="results-table">
-                <table>
+                <table className="table table-condensed table-striped">
                     <thead>
                     <tr>
                         <th onClick={() => this.sort("team")}>Team</th>

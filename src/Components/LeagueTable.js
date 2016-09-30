@@ -98,8 +98,7 @@ class LeagueTable extends React.Component {
           <LeagueRules pointsType='win' points={this.state.rules.pointsForWin} setPoints={this.actions.setPointsForWin} />
           <LeagueRules pointsType='draw' points={this.state.rules.pointsForDraw} setPoints={this.actions.setPointsForDraw} />
           <AddTeam actions={this.actions} />
-        </div>
-        <JsonDebug info={this.state} />
+        </div>        
       </div>
     )
   }
