@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import ResultsTable from './ResultsTable'
 import AddTeam from "./AddTeam"
 import LeagueRules from "./LeagueRules"

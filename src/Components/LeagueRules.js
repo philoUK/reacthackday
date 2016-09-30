@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 
 class LeagueRules extends React.Component {
   render() {
