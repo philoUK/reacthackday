@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
+import AddMatch from "./AddMatch";
 
 class LeagueTable extends React.Component {
   render () {
