@@ -3,7 +3,7 @@ import LeagueRow from './LeagueRow'
 
 class ResultsTable extends React.Component {
     render(){
-        let teams = this.props.teams || [];
+        let results = this.props.results || [];
         return (
             <div className="results-table">
                 <table>
@@ -19,7 +19,7 @@ class ResultsTable extends React.Component {
                     </tr>
                     </thead>
                     <tbody>
-                        {teams.map(team => <LeagueRow team={team} />)}
+                        {results.map(result => <LeagueRow result={result} key={result.team} />)}
                     </tbody>
                 </table>
             </div>

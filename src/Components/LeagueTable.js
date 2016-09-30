@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import ResultsTable from './ResultsTable'
+import AddTeam from "./AddTeam"
 
 class LeagueTable extends React.Component {
   constructor() {
@@ -10,7 +11,27 @@ class LeagueTable extends React.Component {
       rules: {
         pointsForWin: 3,
         pointsForDraw: 1
-      }
+      },
+      dummyResults: [
+        {
+          team: "Chalgrove United",
+          for: 3,
+          against: 2,
+          won: 1,
+          drawn: 1,
+          lost: 0,
+          points: 4
+        },
+        {
+          team: "Watlington Rovers",
+          for: 2,
+          against: 3,
+          won: 0,
+          drawn: 1,
+          lost: 1,
+          points: 1
+        }
+      ]
     };
 
     this.actions = {
@@ -57,13 +78,16 @@ class LeagueTable extends React.Component {
       <div className="league-table">
         {/*
         <AddMatch teams={this.state.teams} actions={this.actions} />
-        <ResultsTable />
+        */}
+        <ResultsTable results={this.state.dummyResults} />
         <div className="settings">
+          {/*
           <LeagueRules actions={this.actions} />
           <LeagueRules actions={this.actions} />
+          */}
           <AddTeam actions={this.actions} />
         </div>
-        */}
+        <p>{JSON.stringify(this.state)}</p>
       </div>
     )
   }
