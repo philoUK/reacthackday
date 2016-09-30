@@ -55,6 +55,7 @@ export default (matches, rules) => {
   for (let key in results) {
     let result = results[key];
     result.points = result.getPoints(rules);
+    result.played = result.won + result.drawn + result.lost;
     resultList.push(result);
   }
 

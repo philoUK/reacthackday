@@ -22,11 +22,12 @@ class ResultsTable extends React.Component {
                     <thead>
                     <tr>
                         <th onClick={() => this.stringSort("team")}>Team</th>
-                        <th onClick={() => this.sort("for")}>For</th>
-                        <th onClick={() => this.sort("against")}>Against</th>
+                        <th onClick={() => this.sort("played")}>Played</th>
                         <th onClick={() => this.sort("won")}>Won</th>
                         <th onClick={() => this.sort("drawn")}>Drawn</th>
                         <th onClick={() => this.sort("lost")}>Lost</th>
+                        <th onClick={() => this.sort("for")}>For</th>
+                        <th onClick={() => this.sort("against")}>Against</th>
                         <th onClick={() => this.sort("points")}>Points</th>
                     </tr>
                     </thead>
