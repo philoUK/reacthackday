@@ -1,0 +1,43 @@
+<div className="league-table">
+  <div className="add-match">
+    <select><option>-- Team --</option></select>
+    <input type="number" />
+    <select><option>-- Team --</option></select>
+    <input type="number" />
+    <button>Add</button>
+  </div>
+
+  <div className="results-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>For</th>
+          <th>Against</th>
+          <th>Won</th>
+          <th>Drawn</th>
+          <th>Lost</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div className="settings">
+    <span className="league-rules">
+      <label>
+        Points for win
+        <input type="number" />
+      </label>
+      <label>
+        Points for draw
+        <input type="number" />
+      </label>
+    </span>
+    <span className="add-team">
+      <input type="text" />
+      <button>Add team</button>
+    </span>
+  </div>
+</div>
