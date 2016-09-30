@@ -6,13 +6,12 @@ class ResultsTable extends React.Component {
       this.setState({results: this.props.results || []});
     }
 
-    componentWillReceiveProps(nextProps) {
-      this.setState({results: nextProps.results})
+    componentDidMount() {
+      this.sort("points", true);
     }
 
-    componentDidMount() {
-      this.sortDescending = true;
-      this.sort("points");
+    componentWillReceiveProps(nextProps) {
+      this.sort(this.state.sort.column, this.state.sort.descending, nextProps.results);
     }
 
     render(){
@@ -21,7 +20,7 @@ class ResultsTable extends React.Component {
                 <table>
                     <thead>
                     <tr>
-                        <th onClick={() => this.stringSort("team")}>Team</th>
+                        <th onClick={() => this.sort("team")}>Team</th>
                         <th onClick={() => this.sort("played")}>Played</th>
                         <th onClick={() => this.sort("won")}>Won</th>
                         <th onClick={() => this.sort("drawn")}>Drawn</th>
@@ -40,19 +39,24 @@ class ResultsTable extends React.Component {
         )
     }
 
-    sort(prop) {
-      this.sortInternal(prop, (a, b) => b[prop] - a[prop], (a, b) => a[prop] - b[prop]);
+    sort(column, descending, results) {
+      if (descending === undefined) {
+        descending = !this.state.sort.descending;
+      }
+      results = results || this.state.results;
+      if (column === "team") {
+        this.sortInternal(column, descending, (a, b) => b[column].localeCompare(a[column]), (a, b) => a[column].localeCompare(b[column]), results);
+      }
+      else {
+        this.sortInternal(column, descending, (a, b) => b[column] - a[column], (a, b) => a[column] - b[column], results);
+      }
     }
 
-    stringSort(prop) {
-      this.sortInternal(prop, (a, b) => a[prop].localeCompare(b[prop]), (a, b) => b[prop].localeCompare(a[prop]))
-    }
-
-    sortInternal(prop, compareDescending, compareAscending) {
+    sortInternal(column, descending, compareDescending, compareAscending, results) {
       this.setState({
-        results: this.state.results.sort((a, b) => this.sortDescending ? compareDescending(a, b) : compareAscending(a, b))
+        results: results.sort((a, b) => descending ? compareDescending(a, b) : compareAscending(a, b)),
+        sort: { column, descending }
       });
-      this.sortDescending = !this.sortDescending;
     }
 }
 
