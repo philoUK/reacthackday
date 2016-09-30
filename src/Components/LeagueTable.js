@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import ResultsTable from './ResultsTable'
 import AddTeam from "./AddTeam"
+import LeagueRules from "./LeagueRules"
 import AddMatch from "./AddMatch"
 import calculateResults from "../Model/calculateResults"
 
@@ -13,7 +14,7 @@ class LeagueTable extends React.Component {
         {
           team1: {teamName: "Chalgrove", score: 1},
           team2: {teamName: "Watlington", score: 0}
-        },
+      },
         {
           team1: {teamName: "Chalgrove", score: 0},
           team2: {teamName: "Stadhampton", score: 2}
@@ -26,7 +27,7 @@ class LeagueTable extends React.Component {
       rules: {
         pointsForWin: 3,
         pointsForDraw: 1
-      }
+        }
     };
 
     this.actions = {
@@ -75,10 +76,8 @@ class LeagueTable extends React.Component {
         <AddMatch teams={this.state.teams} actions={this.actions} />
         <ResultsTable results={calculateResults(this.state.matches, this.state.rules)} />
         <div className="settings">
-          {/*
-          <LeagueRules actions={this.actions} />
-          <LeagueRules actions={this.actions} />
-          */}
+          <LeagueRules pointsType='win' points={this.state.rules.pointsForWin} setPoints={this.setPointsForWin} />
+          <LeagueRules pointsType='draw' points={this.state.rules.pointsForDraw} setPoints={this.setPointsForDraw} />
           <AddTeam actions={this.actions} />
         </div>
         <p>{JSON.stringify(this.state)}</p>
