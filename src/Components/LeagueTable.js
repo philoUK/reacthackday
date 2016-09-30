@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import ResultsTable from './ResultsTable'
 import AddTeam from "./AddTeam"
 import LeagueRules from "./LeagueRules"
+import AddMatch from "./AddMatch";
 
 class LeagueTable extends React.Component {
   constructor() {
@@ -77,9 +78,8 @@ class LeagueTable extends React.Component {
     return (
 
       <div className="league-table">
-        {/*
+
         <AddMatch teams={this.state.teams} actions={this.actions} />
-        */}
         <ResultsTable results={this.state.dummyResults} />
         <div className="settings">
           <LeagueRules pointsType='win' points={this.state.rules.pointsForWin} setPoints={this.setPointsForWin} />
