@@ -29,10 +29,11 @@ class ResultsTable extends React.Component {
                         <th onClick={() => this.sort("for")}>For</th>
                         <th onClick={() => this.sort("against")}>Against</th>
                         <th onClick={() => this.sort("points")}>Points</th>
+                        <th>{/* Delete */}</th>
                     </tr>
                     </thead>
                     <tbody>
-                        {this.state.results.map(result => <LeagueRow result={result} key={result.team} />)}
+                        {this.state.results.map(result => <LeagueRow result={result} actions={this.props.actions} key={result.team} />)}
                     </tbody>
                 </table>
             </div>

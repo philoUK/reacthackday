@@ -13,6 +13,7 @@ class LeagueRow extends React.Component{
                 <td>{result.for}</td>
                 <td>{result.against}</td>
                 <td>{result.points}</td>
+                <td><button onClick={() => this.props.actions.removeTeam(result.team)}>x</button></td>
             </tr>
         )
     }

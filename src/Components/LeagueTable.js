@@ -28,6 +28,7 @@ class LeagueTable extends React.Component {
 
     this.actions = {
       addTeam: this.addTeam.bind(this),
+      removeTeam: this.removeTeam.bind(this),
       addMatch: this.addMatch.bind(this),
       setPointsForWin: this.setPointsForWin.bind(this),
       setPointsForDraw: this.setPointsForDraw.bind(this)
@@ -41,6 +42,13 @@ class LeagueTable extends React.Component {
   addTeam(name) {
     this.setState({
       teams: this.state.teams.concat(name)
+    });
+  }
+
+  removeTeam(name) {
+    this.setState({
+      teams: this.state.teams.filter(team => team !== name),
+      matches: this.state.matches.filter((match) => match.team1.teamName !== name && match.team2.teamName !== name)
     });
   }
 
@@ -74,7 +82,7 @@ class LeagueTable extends React.Component {
       <div className="league-table">
 
         <AddMatch teams={this.state.teams} actions={this.actions} />
-        <ResultsTable results={calculateResults(this.state.matches, this.state.rules)} />
+        <ResultsTable results={calculateResults(this.state.matches, this.state.rules)} actions={this.actions}/>
         <div className="settings">
           <LeagueRules pointsType='win' points={this.state.rules.pointsForWin} setPoints={this.actions.setPointsForWin} />
           <LeagueRules pointsType='draw' points={this.state.rules.pointsForDraw} setPoints={this.actions.setPointsForDraw} />
