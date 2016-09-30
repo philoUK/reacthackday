@@ -1,38 +1,32 @@
 import React, { PropTypes } from 'react'
 import ResultsTable from './ResultsTable'
 import AddTeam from "./AddTeam"
-import AddMatch from "./AddMatch";
+import AddMatch from "./AddMatch"
+import calculateResults from "../Model/calculateResults"
 
 class LeagueTable extends React.Component {
   constructor() {
     super();
     this.state = {
       teams: [],
-      matches: [],
+      matches: [
+        {
+          team1: {teamName: "Chalgrove", score: 1},
+          team2: {teamName: "Watlington", score: 0}
+        },
+        {
+          team1: {teamName: "Chalgrove", score: 0},
+          team2: {teamName: "Stadhampton", score: 2}
+        },
+        {
+          team1: {teamName: "Stadhampton", score: 1},
+          team2: {teamName: "Watlington", score: 1}
+        },
+      ],
       rules: {
         pointsForWin: 3,
         pointsForDraw: 1
-      },
-      dummyResults: [
-        {
-          team: "Chalgrove United",
-          for: 3,
-          against: 2,
-          won: 1,
-          drawn: 1,
-          lost: 0,
-          points: 4
-        },
-        {
-          team: "Watlington Rovers",
-          for: 2,
-          against: 3,
-          won: 0,
-          drawn: 1,
-          lost: 1,
-          points: 1
-        }
-      ]
+      }
     };
 
     this.actions = {
@@ -79,7 +73,7 @@ class LeagueTable extends React.Component {
       <div className="league-table">
 
         <AddMatch teams={this.state.teams} actions={this.actions} />
-        <ResultsTable results={this.state.dummyResults} />
+        <ResultsTable results={calculateResults(this.state.matches, this.state.rules)} />
         <div className="settings">
           {/*
           <LeagueRules actions={this.actions} />
