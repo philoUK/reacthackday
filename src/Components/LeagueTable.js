@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import AddTeam from "./AddTeam"
 
 class LeagueTable extends React.Component {
   constructor() {
@@ -57,12 +58,15 @@ class LeagueTable extends React.Component {
         {/*
         <AddMatch teams={this.state.teams} actions={this.actions} />
         <ResultsTable />
+        */}
         <div className="settings">
+          {/*
           <LeagueRules actions={this.actions} />
           <LeagueRules actions={this.actions} />
+          */}
           <AddTeam actions={this.actions} />
         </div>
-        */}
+        <p>{JSON.stringify(this.state)}</p>
       </div>
     )
   }
