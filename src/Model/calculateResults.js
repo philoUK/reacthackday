@@ -58,5 +58,5 @@ export default (matches, rules) => {
     resultList.push(result);
   }
 
-  return resultList.sort((a, b) => b.points - a.points);
+  return resultList;
 }
