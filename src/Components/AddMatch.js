@@ -3,16 +3,7 @@ import React, { PropTypes } from 'react'
 class AddMatch extends React.Component {
     constructor() {
         super();
-        this.state = {
-            team1: {
-                teamName: "",
-                score: 0
-            },
-            team2: {
-                teamName: "",
-                score: 0
-            }
-        };
+        this.state = this._initialState();
     }
 
     render () {
@@ -26,15 +17,14 @@ class AddMatch extends React.Component {
     }
 
     _getTeam(team) {
-        var teams = this.props.teams || [
-            "England",
-            "New Zealand"
-        ];
+        let defaultValue = "-- Select Team --";
+        var teams = this.props.teams || [];
+        teams.unshift(defaultValue)
 
         return (
             <span>
                 <select
-                    defaultValue="-- Select Team --"
+                    defaultValue={defaultValue}
                     value={this.state[team].teamName}
                     onChange={this._nameChange.bind(this, team)}>
 
@@ -51,6 +41,7 @@ class AddMatch extends React.Component {
     _addClick(event) {
         event.preventDefault();
         this.props.actions.addMatch(this.state);
+        this.setState(this._initialState());
     }
 
     _scoreChange(team, event) {
@@ -63,6 +54,19 @@ class AddMatch extends React.Component {
         event.preventDefault();
         this.state[team].teamName = event.target.value;
         this.setState(this.state);
+    }
+
+    _initialState() {
+        return {
+            team1: {
+                teamName: "",
+                score: 0
+            },
+            team2: {
+                teamName: "",
+                score: 0
+            }
+        };
     }
 }
 
