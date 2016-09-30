@@ -77,9 +77,8 @@ class LeagueTable extends React.Component {
     return (
 
       <div className="league-table">
-        {/*
+
         <AddMatch teams={this.state.teams} actions={this.actions} />
-        */}
         <ResultsTable results={this.state.dummyResults} />
         <div className="settings">
           {/*

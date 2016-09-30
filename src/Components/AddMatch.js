@@ -17,18 +17,15 @@ class AddMatch extends React.Component {
     }
 
     _getTeam(team) {
-        let defaultValue = "-- Select Team --";
         var teams = this.props.teams || [];
-        teams.unshift(defaultValue)
 
         return (
             <span>
                 <select
-                    defaultValue={defaultValue}
                     value={this.state[team].teamName}
                     onChange={this._nameChange.bind(this, team)}>
-
-                    {teams.map(t => <option value={t}>{t}</option>)}
+                    <option value="">-- Select Team --</option>
+                    {teams.map(t => <option value={t} key={t}>{t}</option>)}
                 </select>
                 <input
                     type="number"
